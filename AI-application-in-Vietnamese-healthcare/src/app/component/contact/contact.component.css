@@ -1,0 +1,22 @@
+.container{
+    background-color: #2E91D4;
+    border-radius: 20px;
+}
+.infoLeft{
+    color: #ffffff;
+}
+.infoLeft p{
+    font-size: smaller;
+}
+.infoLeft a{
+    color: #fff;
+}
+.infoRight{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: -5px 5px 10px rgb(87, 86, 86);
+}
+.nut button{
+    width: 100% !important;
+    height: 45px;
+}

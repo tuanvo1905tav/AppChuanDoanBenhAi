@@ -1,0 +1,65 @@
+
+.banner{
+    width: 100%;
+    height: 300px !important;
+    color: #fff;
+    /* background-image: linear-gradient(0deg, rgb(0, 131, 192), rgb(255, 255, 255)); */
+    background-color: #2E91D4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nd{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.container .card{
+    margin-top: 20px;
+}
+/* .container .card{
+    margin: 5px !important;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left:rgba(255, 255, 255, 0.5);
+}
+.container .card:hover{
+    transition: 0.3s;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    background: rgb(238, 238, 238)
+} */
+.avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+.tit{
+    font-size: 22px;
+    font-weight: 400;
+}
+/* 
+.container .card .content{
+    padding: 20px;
+    text-align: center;
+    transform: translateY(100px);
+    transition: 0.5s;
+    opacity: 0;
+}
+.container .card:hover .content{
+    transform: translateY(0px);
+    opacity: 1;
+} */
+@media screen and (max-width: 600px) {
+    .tieude{
+        font-size: 40px;
+    }
+  }
+
+
+.elipsit{
+    white-space: nowrap; 
+    width: 220px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

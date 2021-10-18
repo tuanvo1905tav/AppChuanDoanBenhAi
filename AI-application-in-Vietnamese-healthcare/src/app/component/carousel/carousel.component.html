@@ -1,0 +1,25 @@
+<!-- <ngb-carousel *ngIf="images">
+  <ng-template ngbSlide *ngFor="let image of images; let i = index">
+    <img [src]="image" alt="Random first slide" class="img-fluid banners" />
+    <div class="carousel-caption">
+      <h3>10 seconds between slides...</h3>
+      <p>This carousel uses customized default values.</p>
+    </div>
+  </ng-template>
+</ngb-carousel> -->
+
+<!-- ===================Banner===================== -->
+<div class="container-fluid px-0 mb-5">
+  <div class="row ml-0 mr-0">
+    <div class="col-12 px-0">
+      <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide *ngFor="let image of images; let i = index">
+          <div class="picsum-img-wrapper">
+            <img class="d-block w-100" [src]="image" alt="slide {{ i }}" />
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</div>
+<!-- ===================End banner===================== -->

@@ -1,0 +1,27 @@
+.row2{
+    border: 1px solid #ccc;
+}
+
+@media  screen and  (max-width:2000px){
+    .infoLeft{
+        width: 1000px;
+        height: auto;
+    }
+    .inforRight{
+        width: 1000px;
+        height: auto; 
+    }
+
+}
+
+@media  screen and  (max-width:2000px){
+    .infoLeft{
+        width: 600px;
+        height: auto;
+    }
+    .inforRight{
+        width: 600px;
+        height: auto; 
+    }
+
+}

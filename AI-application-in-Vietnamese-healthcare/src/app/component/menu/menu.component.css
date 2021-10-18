@@ -1,0 +1,86 @@
+.account img {
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+@media screen and (min-width: 992px) {
+  #navbarSupportedContent {
+    justify-content: space-between;
+  }
+
+  .access .btn {
+    margin: 0 10px;
+  }
+
+  .search-form {
+    margin: 0 10px;
+    width: 20% !important;
+  }
+
+  .account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .access .btn {
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+  }
+
+  .account {
+    margin: 0 auto;
+  }
+
+  .account img {
+    margin: 10px;
+  }
+}
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 15px;
+  border: 2px dotted #cccccc;
+  border-radius: 10px;
+}
+h1 {
+  color: #009999;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.input-box {
+  margin-bottom: 10px;
+}
+.input-box input {
+  padding: 7.5px 15px;
+  width: 100%;
+  border: 1px solid #cccccc;
+  outline: none;
+}
+.btn-box {
+  text-align: right;
+  margin-top: 30px;
+}
+.btn-box button {
+  padding: 7.5px 15px;
+  border-radius: 2px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+}
+.nutDNDK{
+  /* background-image: linear-gradient(none, rgb(0, 73, 168), rgb(255, 255, 255)); */
+  background-color: #3A9EFC;
+  color: #ffffff;
+}
+.nutDNDK:hover{
+  background-color: #0084ff;
+  transition: 0.3s;
+}
+.titledndk{
+  color: #0084ff;
+}

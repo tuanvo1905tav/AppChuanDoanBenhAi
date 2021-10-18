@@ -1,0 +1,288 @@
+<div class="container text-center pt-3">
+  <h1 class="pt-2">Dự đoán mắc Covid-19</h1>
+</div>
+<div
+  class="container pt-3 bg-light pb-3"
+  style="border-radius: 8px; box-shadow: 25px 25px 55px #dfdfdf;"
+>
+  <nz-steps [nzCurrent]="current" nz-row>
+    <nz-step nzTitle="Thông tin cá nhân" nz-col nzSpan="6"></nz-step>
+    <nz-step nzTitle="Triệu chứng thường gặp" nz-col nzSpan="6"></nz-step>
+    <nz-step
+      nzTitle="Triệu chứng theo kết luận bác sĩ"
+      nz-col
+      nzSpan="6"
+    ></nz-step>
+    <nz-step nzTitle="Dự đoán" nz-col nzSpan="6"></nz-step>
+  </nz-steps>
+
+  <div class="steps-content mt-5">
+    <!--Thông tin cá nhân-->
+    <form novalidate autocomplete="off" #form="ngForm">
+      <div *ngIf="current == 0">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3">
+              <form [formGroup]="infoForm">
+                <p>Họ và tên:</p>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                  required
+                />
+              </form>
+            </div>
+            <div class="col-lg-3">
+              <form [formGroup]="agesFrom" (ngSubmit)="getId()">
+                <p>Độ tuổi:</p>
+                <select class="custom-select" formControlName="ages" id="ages">
+                  <option *ngFor="let a of ages" [ngValue]="a.id">
+                    {{ a.age }}
+                  </option>
+                </select>
+              </form>
+            </div>
+            <div class="col-lg-3">
+              <form [formGroup]="genderForm" (ngSubmit)="getId()">
+                <p>Giới tính:</p>
+                <select
+                  class="custom-select"
+                  formControlName="gender"
+                  id="gender"
+                >
+                  <option *ngFor="let g of gender" [ngValue]="g.value">
+                    {{ g.name }}
+                  </option>
+                </select>
+              </form>
+            </div>
+            <div class="col-lg-3">
+              <form [formGroup]="infoForm">
+                <p>Số điện thoại:</p>
+                <input
+                  class="form-control"
+                  formControlName="phone"
+                  required
+                  maxlength="11"
+                  minlength="10"
+                />
+              </form>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-lg-6">
+              <form [formGroup]="infoForm">
+                <p>Địa chỉ:</p>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="direction"
+                  required
+                />
+              </form>
+            </div>
+            <div class="col-lg-3">
+              <form [formGroup]="infoForm">
+                <p>Dân tộc:</p>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="nation"
+                  required
+                />
+              </form>
+            </div>
+            <div class="col-lg-3">
+              <form [formGroup]="infoForm">
+                <p>Nghề nghiệp:</p>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="job"
+                  required
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- Triệu chứng thường gặp -->
+    <div *ngIf="current == 1">
+      <div class="container">
+        <div class="row">
+          <p style="color: rgb(255, 0, 0); font-size: 18px;">
+            <span style="color: red;">* Chú ý:</span>
+            Các triệu chứng có thể xuất hiện từ 2-14 ngày sau khi phơi nhiễm với
+            virut. Bất cứ ai cũng có thể có các triệu chứng từ nhẹ đến nghiêm
+            trọng. Những người có các triệu chứng này có thể nhiễm COVID-19.
+          </p>
+          <br />
+        </div>
+        <form [formGroup]="formPredict_titles_step2">
+          <div class="row">
+            <table class="table table-striped">
+              <thead>
+                <tr style="background-color: #47a6ff; color: #fff;">
+                  <th scope="col">Triệu chứng</th>
+                  <th scope="col">Mô tả</th>
+                  <th scope="col">Có</th>
+                  <th scope="col">Không</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let title of titles_step2; index as i">
+                  <td>{{ title.name }}</td>
+                  <td>{{ title.description }}</td>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="value{{ i + 1 }}"
+                        id="value{{ i + 1 }}_yes"
+                        value="1"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="value{{ i + 1 }}_yes"
+                      >
+                        Có
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="value{{ i + 1 }}"
+                        value="0"
+                        id="value{{ i + 1 }}_no"
+                      />
+                      <label class="form-check-label" for="value{{ i + 1 }}_no">
+                        Không
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Triệu chứng theo kết luận bác sĩ -->
+    <div *ngIf="current == 2">
+      <div class="container">
+        <div class="row">
+          <p style="color: rgb(255, 0, 0); font-size: 18px;">
+            <span style="color: red;">* Chú ý:</span>
+            Các triệu chứng được xác nhận khi khám tại cơ sở y tế.
+            <br />
+            Bạn có thể bỏ qua bước này nếu bạn chưa nhận được sự tư vấn từ bác
+            sĩ
+            <i>(khả năng dự đoán chính xác không cao).</i>
+          </p>
+          <br />
+          <br />
+        </div>
+        <form [formGroup]="formPredict_titles_step3">
+          <div class="row">
+            <table class="table">
+              <thead>
+                <tr style="background-color: #47a6ff; color: #fff;">
+                  <th scope="col">Triệu chứng</th>
+                  <th scope="col">Mô tả</th>
+                  <th scope="col">Có</th>
+                  <th scope="col">Không</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let title of titles_step3; index as i">
+                  <td>{{ title.name }}</td>
+                  <td>
+                    {{ title.description }}
+                  </td>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="value{{ i + 1 }}"
+                        id="value{{ i + 1 }}_yes"
+                        value="1"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="value{{ i + 1 }}_yes"
+                      >
+                        Có
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="value{{ i + 1 }}"
+                        value="0"
+                        id="value{{ i + 1 }}_no"
+                      />
+                      <label class="form-check-label" for="value{{ i + 1 }}_no">
+                        Không
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="steps-action text-center">
+    <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+      <span>Quay lại</span>
+    </button>
+    <button
+      nz-button
+      nzType="default"
+      (click)="next(); getId()"
+      *ngIf="current === 0"
+    >
+      <span>Tiếp</span>
+    </button>
+    <button
+      nz-button
+      nzType="default"
+      (click)="next(); getId()"
+      *ngIf="current === 1"
+    >
+      <span>Tiếp</span>
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="onSubmit_step2(); next()"
+      *ngIf="current === 2"
+      [disabled]="
+        formPredict_titles_step3.valid && !formPredict_titles_step2.valid
+      "
+    >
+      <span>Bỏ qua</span>
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="onSubmit_step3(); next()"
+      *ngIf="current === 2"
+      [disabled]="!formPredict_titles_step3.valid"
+    >
+      <span>Dự đoán</span>
+    </button>
+  </div>
+</div>

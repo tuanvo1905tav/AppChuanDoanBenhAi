@@ -1,0 +1,11 @@
+p{
+    text-align: justify !important;
+}
+@media screen and (max-width: 600px) {
+    .tieude{
+        text-align: center !important;
+    }
+    .nd{
+        padding-top: 0px !important;
+    }
+  }
